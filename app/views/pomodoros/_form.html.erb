@@ -1,0 +1,25 @@
+<%= form_for(@pomodoro) do |f| %>
+  <% if @pomodoro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pomodoro.errors.count, "error") %> prohibited this pomodoro from being saved:</h2>
+
+      <ul>
+      <% @pomodoro.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

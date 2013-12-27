@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @pomodoro.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @pomodoro.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_pomodoro_path(@pomodoro) %> |
+<%= link_to 'Back', pomodoros_path %>
