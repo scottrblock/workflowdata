@@ -80,4 +80,22 @@ class PomodorosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #group_by
+  def group
+    group_by = "group_by_#{params[:length]}"
+    grouped_data = Pomodoro.send(group_by.to_sym, :created_at).count
+    respond_to do |format|
+      format.html
+      format.json { render json: grouped_data }
+    end
+  end
 end
+
+
+
+
+
+
+
+
