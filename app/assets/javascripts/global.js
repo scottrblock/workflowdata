@@ -34,7 +34,7 @@ var buildCalHeatMap = function(data){
       return moment(date).format("MMMM").toUpperCase();
     },
     subDomainTextFormat: "%d",
-    legend: [20, 40, 60, 80]
+    legend: [1, 5, 10, 15, 20]
   });
 }
 

@@ -1,6 +1,13 @@
 @import "libs/bootstrap.slate.min";
 @import "libs/cal-heatmap";
 
+//extend heatmap css
+.q6{
+  background-color: #1e3414;
+  fill: #1e3414;
+}
+
+
 .graph-wrap{
   margin-bottom: 30px;
 }
