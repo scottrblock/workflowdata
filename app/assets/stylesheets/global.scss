@@ -1,4 +1,15 @@
-#container{
-  height: 500px;
-  min-width: 500px;
+@import "libs/bootstrap.slate.min.css";
+@import "libs/cal-heatmap.css";
+
+.graph-wrap{
+  margin-bottom: 30px;
+}
+
+.heat-map-title{
+  float: left;
+}
+
+.heat-map-buttons{
+  margin: 20px;
+  float: left;
 }

@@ -12,4 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require libs/underscore
+//= require libs/highstock
+//= require libs/exporting
+//= require libs/d3.v3.min
+//= require libs/cal-heatmap.min
+//= require libs/moment.min
 //= require_tree .
