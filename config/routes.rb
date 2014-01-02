@@ -3,6 +3,7 @@ WorkflowData::Application.routes.draw do
 
   resources :pomodoros
   get 'pomodoros/group/:length/data', to: 'pomodoros#group', defaults: { format: 'json' }
+  get 'pomodoros/punchcard/data', to: 'pomodoros#punchcard', defaults: { format: 'json' }
 
 
   # The priority is based upon order of creation:

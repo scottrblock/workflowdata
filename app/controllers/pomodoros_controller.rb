@@ -95,6 +95,31 @@ class PomodorosController < ApplicationController
       end
     end
   end
+
+  def punchcard
+    days = (0..6).to_a
+    
+    data = days.map do |day|
+      by_hour = Array.new(24) { 0 }
+      Pomodoro.
+        where('extract(DOW FROM created_at ) = ?', day).
+        select('extract(HOUR FROM created_at) as hour, count(*) as count').
+        group('extract(HOUR FROM created_at)').
+        order('extract(HOUR FROM created_at)').
+        map { |pomodoro| 
+          by_hour[pomodoro.hour.to_i + Time.zone.utc_offset/60/60] = pomodoro.count 
+        }
+
+      by_hour
+    end
+
+    
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json:  data }
+    end
+  end
 end
 
 
