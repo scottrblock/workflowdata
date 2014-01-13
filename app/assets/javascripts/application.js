@@ -18,4 +18,5 @@
 //= require libs/d3.v3.min
 //= require libs/cal-heatmap.min
 //= require libs/moment.min
+//= require libs/colors
 //= require_tree .

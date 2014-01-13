@@ -1,4 +1,12 @@
 var buildLineGraph = function(data){
+  Highcharts.setOptions({
+      chart: {
+          style: {
+              fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif'
+          }
+      }
+  });
+
   $('#stock-chart').highcharts('StockChart', {
      rangeSelector : {
        selected : 1
@@ -10,7 +18,8 @@ var buildLineGraph = function(data){
        tooltip: {
          valueDecimals: 0
        }
-     }]
+     }],
+
    });
 };
 
@@ -34,7 +43,24 @@ var buildCalHeatMap = function(data){
       return moment(date).format("MMMM").toUpperCase();
     },
     subDomainTextFormat: "%d",
-    legend: [1, 5, 10, 15, 20]
+    legend: [1, 5, 10, 15, 20],
+    onComplete: function(){
+      makeComplimentaryColors();
+    },
+    afterLoadPreviousDomain: function(date) {
+      makeComplimentaryColors();
+    },
+    afterLoadNextDomain: function(date) {
+      makeComplimentaryColors();
+    }
+  });
+};
+
+var makeComplimentaryColors = function(){
+  $('.graph .graph-rect').each(function(e, i){
+    var $rect = $(this);
+    var new_text_color = $c.complement( $rect.css('fill') );
+    $rect.nextAll('text').css('fill', new_text_color);
   });
 };
 
@@ -148,7 +174,9 @@ var buildPunchCard = function(data){
         data([data[i][j]]).
         enter().
         append("circle").
-        style("fill", "#888").
+        style("fill", function(d){
+          return "rgba(216, 212, 207, " + (d / max) + ")";
+        }).
         on("mouseover", mover).
         on("mouseout", mout).
         on("mousemove", function() {
